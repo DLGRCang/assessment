@@ -8,7 +8,7 @@ Page({
     list:[
       {id:1,text:"驻村",image:"../../../image/inform/1.png",url:""},
       {id:2,text:"工作外派",image:"../../../image/inform/1.png",url:""},
-      {id:3,text:"驻村",image:"../../../image/inform/1.png",url:""},
+      {id:3,text:"驻aaa村",image:"../../../image/inform/1.png",url:""},
       {id:4,text:"驻村",image:"../../../image/inform/1.png",url:""},
       {id:5,text:"驻村",image:"../../../image/inform/1.png",url:""},
       {id:6,text:"驻村",image:"../../../image/inform/1.png",url:""},
