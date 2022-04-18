@@ -1,0 +1,10 @@
+<view class="input_com" style="border-radius: {{radius}}rpx;height: {{ }}rpx;">
+  <view class="input_com_f" wx:if="{{types === 'input'}}">
+    <view class="input_com_f_view" style="width: {{label+'%'}}">{{text}}</view>
+    <input type="{{inType}}" class="input_com_f_input" style="width: {{(100-label)+'%'}}" value="{{inValue}}" type="text" placeholder="{{placeholder}}" bindinput="inputClick"/>
+  </view>
+  <view class="input_com_l" wx:if="{{types === 'textarea'}}">
+    <view class="input_com_l_view">{{text}}</view>
+    <textarea class="input_com_l_text" style="height: {{height}}rpx;" value="{{inValue}}" placeholder="{{placeholder}}" bindinput="inputClick"></textarea>
+  </view>
+</view>

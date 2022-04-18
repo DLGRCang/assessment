@@ -1,0 +1,30 @@
+.missingPage{
+  width: 100%;
+  display: block;
+}
+.noSign{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 50rpx;
+}
+.noSignImg{
+  width: 70%;
+  margin: 0 auto;
+}
+.noSignView{
+  width: 100%;
+  color: #999999;
+  padding-bottom: 30rpx;
+}
+.button{
+  background: #07c160;color: #fff;
+}
+.buttonHover{
+  opacity: 0.8;
+}
+.missing{
+  width: 100%;
+  text-align: center;
+  padding-top: 50rpx;
+}

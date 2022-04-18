@@ -2,11 +2,19 @@
   "pages":[
     "pages/tab/information/information",
     "pages/tab/workToDo/workToDo",
-    "pages/tab/MyCore/MyCore"
+    "pages/fileInDetails/fileInDetails",
+    "pages/workDetails/workDetails",
+    "pages/workDetails/explainDetails/explainDetails",
+    "pages/historyDetails/historyDetails",
+    "pages/historyDetails/fileInDetails/fileInDetails",
+    "pages/tab/MyCore/MyCore",
+    "pages/tab/MyCore/MyData/MyData",
+    "pages/logon/logon",
+    "pages/signIn/signIn"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#F9FBFE",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {

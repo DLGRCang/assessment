@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "case":"../../../components/case/case"
+  },
   "navigationBarTitleText": "个人中心"
 }

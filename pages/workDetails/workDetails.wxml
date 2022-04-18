@@ -1,0 +1,37 @@
+<import src="../../wxParse/wxParse"></import>
+<view class="workDetails" style="{{item.projectStatus === '进行中' || item.projectStatus === '超时' || item.projectStatus === '整改' ? 'paddingBottom: 132rpx;':''}}">
+  <view class="workDetailsView">
+    <view class="work1Title">{{item.projectName}}</view>
+    <view class="work1Time">
+      <view>截止日期：{{item.startProject}}</view>
+      <view style="{{item.projectStatus === '超时' ? 'background: #FF838D':item.projectStatus === '已办结' ? 'background: #266CF4' : item.projectStatus === '整改' ? 'background: #40C1A3':'background: #FF838D'}}">{{item.projectStatus}}</view>
+    </view>
+    <template is="wxParse" data="{{wxParseData:dataHtml.nodes}}"/>
+  </view>
+  <view class="workDetailsView" wx:if="{{item.environmentalManagement !== ''}}">
+    <view class="work2Title">办理情况</view>
+    <view class="work2Cont">{{item.environmentalManagement}}</view>
+    <view class="work2File">
+      <view class="work2FileTitle">附件</view>
+      <view class="work2FileImage">
+        <view wx:for="{{item.environmentalManagementPictureImg}}" wx:for-item="items" wx:key="index"><image src="{{imgUrl+items}}"></image></view>
+      </view>
+    </view>
+    <!-- <view class="work2Time">提交日期：{{item.gmtModified}}</view> -->
+  </view>
+  <view class="workDetailsView" wx:if="{{item.reorganizeSituation !== ''}}">
+    <view class="work2Title">整改情况</view>
+    <view class="work2Cont">{{item.reorganizeSituation}}</view>
+    <view class="work2File">
+      <view class="work2FileTitle">附件</view>
+      <view class="work2FileImage">
+        <view wx:for="{{item.reorganizeSituationPictureImg}}" wx:for-item="items" wx:key="index"><image src="{{imgUrl+items}}"></image></view>
+      </view>
+    </view>
+    <!-- <view class="work2Time">提交日期：2022-03-15</view> -->
+  </view>
+  <view class="buttonP" wx:if="{{item.environmentalManagement === '' && item.projectStatus === '进行中' || item.environmentalManagement === '' && item.projectStatus === '超时' || item.projectStatus === '整改' && item.reorganizeSituation === ''}}">
+    <button wx:if="{{item.projectStatus === '整改' && item.reorganizeSituation === ''}}" id="button" hover-class="buttonHover" hover-stay-time="200" bindtap="blqkClick" data-projectId="{{item.projectId}}" data-projectStatus="{{item.projectStatus}}">整改情况说明</button>
+    <button id="button" wx:if="{{item.projectStatus === '进行中' || item.projectStatus === '超时'}}" hover-class="buttonHover" hover-stay-time="200" bindtap="blqkClick" data-projectId="{{item.projectId}}" data-projectStatus="{{item.projectStatus}}">办理情况说明</button>
+  </view>
+</view>

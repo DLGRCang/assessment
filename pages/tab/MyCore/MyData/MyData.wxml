@@ -1,0 +1,40 @@
+<view class="viewWH">
+  <view class="entry" bindtap="lognClick">
+      <case text="照片" imgSrc="{{resItem.userImage !== '' ? imgUrl+resItem.userImage:''}}"></case>
+      <case text="姓名" content="{{resItem.userName === '' ? '无':resItem.userName}}"></case>
+      <case text="性别" content="{{resItem.userSex === '' ? '无':resItem.userSex}}"></case>
+      <case text="出生年月" content="{{resItem.userBirthDay === '' ? '无':resItem.userBirthDay}}"></case>
+      <case text="民族" caseClass="caseActive" content="{{resItem.userNationName === '' ? '无':resItem.userNationName}}"></case>
+  </view>
+  <view class="title" wx:if="{{resItem.userFullTimeList.length !== 0}}">全日制教育</view>
+  <view class="entry" bindtap="lognClick" wx:if="{{resItem.userFullTimeList.length !== 0}}">
+      <view wx:for="{{resItem.userFullTimeList}}" wx:key="index">
+        <case text="学历学位" content="{{item.userFullTimeQualification === '' ? '无':item.userFullTimeQualification}}"></case>
+        <case text="毕业院校系及专业" content="{{item.userFullTimeGraduationAcademy === '' ? '无':item.userFullTimeGraduationAcademy}}"></case>
+      </view>
+  </view>
+  <view class="title" wx:if="{{resItem.userOnJobList.length !== 0}}">在职教育</view>
+  <view class="entry" bindtap="lognClick" wx:if="{{resItem.userOnJobList.length !== 0}}">
+      <view wx:for="{{resItem.userOnJobList}}" wx:key="index">
+        <case text="学历学位" content="{{item.userOnJobQualification === '' ? '无':item.userOnJobQualification}}"></case>
+        <case text="毕业院校系及专业" content="{{item.userOnJobGraduationAcademy === '' ? '无':item.userOnJobGraduationAcademy}}"></case>
+      </view>
+  </view>
+  <view class="title" wx:if="{{resItem.userFamilyDTOS.length !== 0}}">家庭主要成员及主要社会关系</view>
+  <view class="entry" bindtap="lognClick" wx:if="{{resItem.userFamilyDTOS.length !== 0}}">
+      <view wx:for="{{resItem.userFamilyDTOS}}" wx:key="index">
+        <case text="称谓" content="{{item.appellation === '' ? '无':item.appellation}}"></case>
+        <case text="姓名" content="{{item.userName === '' ? '无':item.userName}}"></case>
+        <case text="年龄" content="{{item.userAge === '' ? '无':item.userAge}}"></case>
+        <case text="政治面貌" content="{{item.politicalLandscape === '' ? '无':item.politicalLandscape}}"></case>
+        <case text="工作单位及职务" content="{{item.workUnitsPosition === '' ? '无':item.workUnitsPosition}}"></case>
+      </view>
+  </view>
+  <view class="entry" bindtap="lognClick">
+      <case text="籍贯" content="{{resItem.userNativePlace === '' ? '无':resItem.userNativePlace}}"></case>
+      <case text="出生地" content="{{resItem.userBirthPlace === '' ? '无':resItem.userBirthPlace}}"></case>
+      <case text="入党时间" content="{{resItem.userPartyTime === '' ? '无':resItem.userPartyTime}}"></case>
+      <case text="参加工作时间" content="{{resItem.userHaveJob === '' ? '无':resItem.userHaveJob}}"></case>
+      <case text="健康状况" caseClass="caseActive" content="{{resItem.userHealthCondition === '' ? '无':resItem.userHealthCondition}}"></case>
+  </view>
+</view>

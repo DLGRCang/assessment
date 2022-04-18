@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "fileImage":"../../components/fileImage/fileImage"
+  },
+  "navigationBarTitleText": "待办详情"
+}

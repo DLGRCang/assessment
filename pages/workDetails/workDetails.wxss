@@ -1,0 +1,98 @@
+@import "../../wxParse/wxParse.wxss";
+.workDetails{
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 50rpx 40rpx 0;
+  
+}
+.workDetailsView{
+  width: 100%;
+  padding: 50rpx 30rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+}
+.work1Title{
+  width: 100%;
+  font-size: 36rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #333333;
+}
+.work1Time{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50rpx 0;
+}
+.work1Time view:first-child{
+  font-size: 22rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #999999;
+}
+.work1Time view:last-child{
+  width: 87rpx;
+height: 45rpx;
+/* background: #266CF4; */
+border-radius: 8rpx;
+font-size: 22rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #FFFFFF;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.work2Title{
+  font-size: 36rpx;
+font-family: Microsoft YaHei;
+font-weight: bold;
+color: #333333;
+}
+.work2Cont{
+  font-size: 28rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #333333;
+padding: 30rpx 0 50rpx;
+}
+.work2File{
+  width: 100%;
+  padding-bottom: 30rpx;
+}
+.work2FileTitle{
+  width: 100%;
+  font-size: 30rpx;
+font-family: Microsoft YaHei;
+font-weight: bold;
+color: #333333;
+padding-bottom: 20rpx;
+}
+.work2FileImage{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.work2FileImage view{
+  width: 140rpx;
+  height: 140rpx;
+  background: #FDD4D4;
+  border-radius: 20rpx;
+  margin-right: 40rpx;
+  overflow: hidden;
+}
+.work2FileImage view image{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.work2Time{
+  width: 100%;
+  font-size: 22rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #999999;
+}

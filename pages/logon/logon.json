@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "inputCom":"../../components/inputCom/inputCom",
+    "choice":"../../components/choice/choice",
+    "fileImage":"../../components/fileImage/fileImage"
+  },
+  "navigationBarTitleText": "注册"
+}

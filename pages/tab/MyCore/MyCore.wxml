@@ -1,2 +1,16 @@
-<!--pages/tab/MyCore/MyCore.wxml-->
-<text>pages/tab/MyCore/MyCore.wxml</text>
+<view class="viewWH">
+  <view class="user">
+    <view bindtap="logonClick">
+      <image wx:if="{{userInfor.userImage !== ''}}" src="{{imgUrl+userInfor.userImage}}"></image>
+      <image wx:if="{{userInfor.userImage === ''&&wxuser === ''}}" src="../../../image/touxaing.png"></image>
+      <image wx:if="{{userInfor.userImage === ''&&wxuser !== ''}}" src="{{wxuser.avatarUrl}}"></image>
+    </view>
+    <!-- <view bindtap="logonClick">{{wxuser === "" ? '请登录':wxuser.nickName}}</view> -->
+    <view bindtap="logonClick">{{userInfor.userName !== "" ? userInfor.userName:wxuser === "" ? '请登录':wxuser.nickName}}</view>
+  </view>
+  <view class="my_list">
+    <view class="entry">
+      <case text="个人资料" caseClass="caseActive" bindtap="my_data"></case>
+    </view>
+  </view>
+</view>

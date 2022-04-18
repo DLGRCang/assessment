@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "choice":"../../components/choice/choice",
+    "missingPage":"../../components/missingPage/missingPage"
+  },
+  "navigationBarTitleText": "填报历史"
+}

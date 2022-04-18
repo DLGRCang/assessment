@@ -1,0 +1,15 @@
+<view class="imagesBox">
+  <view class="imageCount">
+    <text>{{title}}</text>
+    <text wx:if="{{count !== 1}}" style="color:#909399">：{{images.length}}/{{count}}</text>
+  </view>
+  <view class="imagesBoxBody">
+    <view class="image" wx:for="{{images}}" wx:key="index">
+      <text>图片失效</text>
+      <image class="images" mode="aspectFill" src="{{item}}" bindtap="previewImage" data-url="{{item}}" bindlongpress="deleteImage" data-index="{{index}}" alt="图片失效"></image>
+    </view>
+    <view wx:if="{{images.length < count}}" class="addImageIcon" hover-class="addHover" hover-stay-time="200" bindtap="chooseImage">
+      <image class="images" src="../../image/jia.png"></image> 
+    </view>
+  </view>
+</view>

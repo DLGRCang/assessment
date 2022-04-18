@@ -1,0 +1,48 @@
+Component({
+  properties: {
+    radius:{
+      type:Number,
+      value:50
+    },
+    label:{
+      type:Number,
+      value:15
+    },
+    types:{
+      type:String,
+      value:"input"
+    },
+    text:{
+      type:String,
+      value:""
+    },
+    placeholder:{
+      type:String,
+      value:""
+    },
+    wxmodule:{
+      type:String,
+      value:""
+    },
+    height:{
+      type:Number,
+      value:null
+    },
+    inType:{
+      type:String,
+      value:"text"
+    },
+    inValue:{
+      type:String
+    }
+  },
+  data: {},
+  methods: {
+    inputClick(e){
+      this.triggerEvent('inputClick',{
+        name:this.properties.wxmodule,
+        value:e.detail.value
+      })
+    }
+  }
+})

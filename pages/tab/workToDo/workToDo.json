@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "missingPage":"../../../components/missingPage/missingPage"
+  },
   "navigationBarTitleText": "工作待办"
 }

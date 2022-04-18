@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "choice":"../../components/choice/choice",
+    "fileImage":"../../components/fileImage/fileImage",
+    "inputCom":"../../components/inputCom/inputCom"
+  },
+  "navigationBarTitleText": "填报详情"
+}

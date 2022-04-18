@@ -1,0 +1,59 @@
+.case{
+  width: 100%;
+  height: 110rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #F7F7F7;
+}
+.case_f{
+  font-size: 28rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #333333;
+}
+.case_l{
+  display: flex;
+  align-items: center;
+}
+.case_l_view{
+ 
+display: flex;
+align-items: center;
+justify-content: flex-end;
+}
+.case_l_view .case_l_view_view{
+  width: 360rpx;
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #999999;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.case_l_view .imagesView{
+  width: 60rpx;
+height: 60rpx;
+border-radius: 50%;
+margin-left: 20rpx;
+background: #ccc;
+}
+.case_l_view .imagesView .images{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.case_l_right{
+  width: 12rpx; 
+  height: 22rpx;
+  margin-left: 20rpx;
+}
+.caseActive{
+  border-bottom: none;
+}
+.addHover{
+  background-color: #C0C4CC;
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "inputCom":"../../../components/inputCom/inputCom",
+    "fileImage":"../../../components/fileImage/fileImage"
+  },
+  "navigationBarTitleText": "情况说明"
+}

@@ -1,0 +1,13 @@
+<view class="viewWH">
+  <picker bindchange="annualBindPickerChange" range="{{annualList}}" value="{{annualIndex}}" range-key="annualName">
+    <choice text="年度选择" textlast="{{annualIndex === null ? '请选择':annualList[annualIndex].annualName}}"/>
+  </picker>
+  <picker bindchange="bindPickerChange" range="{{listbyparentidList}}" value="{{typeIndex}}" range-key="indicatorsName">
+    <choice text="选择类型" textlast="{{typeIndex === null ? '请选择':listbyparentidList[typeIndex].indicatorsName}}"/>
+  </picker>
+  <inputCom inType="number" text="上报基数" label="24" inValue="{{optionsItem === undefined ? reportBase:''}}" wx:if="{{optionsItem === undefined ? updateItem.reportBase !== 0:optionsItem.integralType === 2}}" placeholder="请输入上报基数" wxmodule="reportBase" bindinputClick="inputClick"/>
+
+  <fileImage title="佐证材料上传" count="3" images="{{images}}" bind:chooseImage="chooseImage" bind:deleteImage="deleteImage"></fileImage>
+  <button id="button" style="margin-top: 90rpx;" wx:if="{{optionsItem !== undefined}}" hover-class="buttonHover" hover-stay-time="200" bindtap="submitClick" data-type="true">提交</button>
+  <button id="button" style="margin-top: 90rpx;" wx:if="{{updateItem !== undefined}}" hover-class="buttonHover" hover-stay-time="200" bindtap="submitClick" data-type="false">修改</button>
+</view>

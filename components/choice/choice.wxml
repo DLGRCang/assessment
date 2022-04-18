@@ -1,0 +1,7 @@
+<view class="choice {{border}}" hover-class="addHover" hover-stay-time="200">
+  <view class="choiceViewFirst">{{text}}</view>
+  <view class="choiceView">
+    <text class="choiceViewText" style="{{textlast === '请选择' ? 'color: #999999;':'color:#000'}}">{{textlast}}</text>
+    <image class="images" src="../../image/right.png"></image>
+  </view>
+</view>

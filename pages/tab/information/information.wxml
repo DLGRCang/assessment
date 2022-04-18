@@ -1,2 +1,9 @@
-<view class="inform">
+<view class="inform" wx:if="{{token !== ''}}">
+  <view class="inform_for" hover-class="addHover" hover-stay-time="200" wx:for="{{list}}" wx:key="index" bindtap="formClick" data-item="{{item}}" data-url="{{item.url}}">
+    <image src="{{item.image}}"></image>
+    <view>{{item.indicatorsName}}</view>
+  </view>
+  
 </view>
+<missingPage type="missing" wx:if="{{list.length === 0 && token !== ''}}"></missingPage>
+<missingPage type="sign" wx:if="{{token === ''}}"></missingPage>

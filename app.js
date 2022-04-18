@@ -1,4 +1,5 @@
 // app.js
+const {baseurl} = require('./utils/env').dev
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -12,6 +13,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+    this.globalData.imgUrl = baseurl+'/assessmentmanagement/route/file/download/false/'
   },
   globalData: {
     userInfo: null

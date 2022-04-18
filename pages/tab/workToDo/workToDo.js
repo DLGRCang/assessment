@@ -1,18 +1,40 @@
 // pages/tab/workToDo/workToDo.js
+import http from "../../../utils/api"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tab:[
+      {id:0,text:"正在待办"},
+      {id:1,text:"已完结"}
+    ],
+    tabIndex:0,
+    list:[],
+    keywords:"",
+    token : wx.getStorageSync('token')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  
+  },
 
+  tabClick(e){
+    //console.log(e.currentTarget.dataset.id)
+    this.setData({
+      tabIndex:e.currentTarget.dataset.id
+    })
+    this.listpageArr()
+  },
+
+  workClick(e){
+    wx.navigateTo({
+      url: '/pages/workDetails/workDetails?projectId='+e.currentTarget.dataset.projectid,
+    })
   },
 
   /**
@@ -26,7 +48,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      token:wx.getStorageSync('token')
+    })
+    if(wx.getStorageSync('token') !== ""){
+      this.listpageArr()
+    }
+    
+  },
 
+  listpageArr(){
+    http.listpageApi({ 
+      data:{
+        projectStatus:this.data.tabIndex === 0 ? "进行中":"已办结",
+        keywords:this.data.keywords
+      },
+      success:res=>{
+        console.log(res)
+        this.setData({
+          list:res
+        })
+      }
+    })
+  },
+
+  keywordsClick(e){
+    this.setData({
+      keywords:e.detail.value
+    })
+    this.listpageArr()
   },
 
   /**

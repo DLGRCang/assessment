@@ -1,0 +1,7 @@
+<view class="viewWH">
+  <inputCom text="{{projectStatus === '整改' ? '整改情况':'办理情况'}}" types="textarea" placeholder="{{projectStatus === '整改' ? '请输入整改情况':'请输入办理情况'}}" wxmodule="environmentalManagement" bindinputClick="inputClick"/>
+  <fileImage title="上传附件（最多三张）" count="3" images="{{images}}" bind:chooseImage="chooseImage" bind:deleteImage="deleteImage"></fileImage>
+  <view class="buttonP">
+    <button id="button" bindtap="submit">提交</button>
+  </view>
+</view>

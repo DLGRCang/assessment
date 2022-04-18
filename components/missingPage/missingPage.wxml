@@ -1,0 +1,11 @@
+<view class="missingPage">
+  <view class="noSign" wx:if="{{type === 'sign'}}">
+    <image class="noSignImg" src="../../image/noSign.png"></image>
+    <view class="noSignView">{{signText}}</view>
+    <button class="button" hover-class="buttonHover" hover-stay-time="200" bindtap="signClick">登录</button>
+  </view>
+  <view class="missing" wx:if="{{type === 'missing'}}">
+    <image class="noSignImg" src="../../image/noPage.png"></image>
+    <view class="noSignView">{{missingText}}</view>
+  </view>
+</view>

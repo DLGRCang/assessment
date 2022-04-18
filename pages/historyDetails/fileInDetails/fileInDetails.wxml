@@ -1,0 +1,18 @@
+<view class="viewWH">
+  <view class="detailsBox">
+    <view class="detailsBoxTime">
+      <view>上报时间：{{item.reportDate}}</view>
+      <view>未通过</view>
+    </view>
+    <view class="detailsBoxView">年度：{{item.annualName}}</view>
+    <view class="detailsBoxView">类型：{{item.indicatorsSecondName}}</view>
+    <view class="detailsBoxView" wx:if="{{item.reportBase !== 0}}">上报基数：{{item.reportBase}}</view>
+    <view class="detailsBoxView">佐证材料</view>
+    <view class="detailsBoxImage">
+      <view wx:for="{{item.image}}" wx:key="index"><image src="{{imgUrl+item}}"></image></view>
+    </view>
+  </view>
+  <view class="buttonP">
+    <button id="button" hover-class="buttonHover" hover-stay-time="200" bindtap="update">修改</button>
+  </view>
+</view>

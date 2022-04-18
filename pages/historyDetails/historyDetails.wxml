@@ -1,0 +1,25 @@
+<view class="viewWH">
+  <picker bindchange="bindPickerChange" range="{{type}}" range-key="indicatorsName">
+    <choice text="类型" textlast="{{typeIndex === null ? '请选择':type[typeIndex].indicatorsName}}"/>
+  </picker>
+  
+    <picker bindchange="annualBindPickerChange" range="{{annualList}}" range-key="annualName">
+      <view class="workToDoTime">
+        {{annualIndex === '' ? '选择年度':annualList[annualIndex].annualName}}
+      </view>
+    </picker>
+  
+  <view class="tab">
+      <view wx:for="{{tab}}" wx:key="index" bindtap="tabClick" data-id="{{item.id}}" style="{{item.id === reportState ? 'background: #FFFFFF;color: #333333;':''}}">{{item.text}}</view>
+  </view>
+  <view class="workList">
+    <view class="workList_body">
+        <view class="workList_for" wx:for="{{list}}" wx:key="index" bindtap="workClick" data-item="{{item}}" hover-class="addHover" hover-stay-time="200">
+            <view>类型：{{item.indicatorsthirdName}}</view>
+            <view wx:for="{{annualList}}" wx:key="indexs" wx:for-item="items" wx:if="{{items.annualId == item.annualId}}">截止日期：{{items.annualEndDate}}</view>
+            <view>{{item.reportState === 1 ? '通过':'未通过'}}</view>
+        </view>
+        <missingPage type="missing" wx:if="{{list.length === 0}}"></missingPage>
+    </view>
+  </view>
+</view>

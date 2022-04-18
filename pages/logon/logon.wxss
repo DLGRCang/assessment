@@ -1,0 +1,111 @@
+.logon{
+  width: 100%;
+  height: 100%;
+  padding: 40rpx;
+}
+.logon_title{
+  width: 100%;
+  padding-bottom: 90rpx;
+}
+.logon_title view:first-child{
+  font-size: 52rpx;
+  font-family: SJyunhei;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 20rpx;
+}
+.logon_title view:last-child{
+  font-size: 26rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #333333;
+}
+.loopList{
+  width: 100%;
+  background: #FFFFFF;
+border-radius: 44rpx;
+padding: 0 25rpx;
+margin-bottom: 30rpx;
+}
+.loopList_top{
+  width: 100%;
+  height: 108rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.loopList_top text{
+  font-size: 28rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #999999;
+}
+.loopList_top image{
+  width: 22rpx;
+  height: 22rpx;
+}
+.loopList_for{
+  width: 100%;
+}
+.loopList_for_top{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+.loopList_for_top view:first-child{
+  font-size: 28rpx;
+font-weight: 400;
+color: #999999;
+}
+.loopList_for_top view:last-child{
+  display: flex;
+  align-items: center;
+}
+.loopList_for_top view:last-child text{
+  font-size: 28rpx;
+font-weight: 400;
+color: #999999;
+padding-right: 20rpx;
+}
+.loopList_for_top view:last-child image{
+  width: 12rpx;
+  height: 22rpx;
+}
+.loopList_for_bot{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:  0 30rpx;
+}
+.loopList_for_bot view:first-child{
+  width: 42%;
+  font-size: 28rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #999999;
+}
+.loopList_for_bot input:last-child{
+  width: 58%;
+  font-size: 28rpx;
+}
+.loopList_for_text{
+  width: 100%;
+  padding: 30rpx;
+}
+.loopList_for_text view:first-child{
+  width: 100%;
+  font-size: 28rpx;
+font-weight: 400;
+color: #999999;
+padding-bottom: 20rpx;
+}
+.loopList_for_text textarea{
+  width: 100%;
+  height: 100rpx;
+  font-size: 28rpx;
+}

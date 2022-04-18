@@ -1,0 +1,110 @@
+<view class="logon">
+  <view class="logon_title">
+    <view>你好</view>
+    <view>欢迎来到财政考核系统</view>
+  </view>
+  <inputCom text="姓名" placeholder="请输入姓名" inValue="{{userName}}" wxmodule="userName" bindinputClick="inputClick"/>
+  <picker bindchange="bindPickerChange" range="{{sex}}" range-key="name" value="{{userIndex}}">
+    <choice text="性别" textlast="{{userIndex === null ? '请选择':sex[userIndex].name}}"/>
+  </picker>
+  <picker mode="date" value="{{userBirthDay}}" start="1900-01-01" end="{{dateEnd}}" bindchange="bindDateChange">
+    <choice text="出生年月" textlast="{{userBirthDay === '' ? '请选择':userBirthDay}}"/>
+  </picker>
+  <picker bindchange="nationbindPickerChange" range="{{nation}}" value="{{nationIndex}}" range-key="dataName">
+    <choice text="民族" textlast="{{nationIndex == null ? '请选择':nation[nationIndex].dataName}}"/>
+  </picker>
+  <picker mode="region" bindchange="bindRegionChange" value="{{userNativePlace}}">
+    <choice text="籍贯" textlast="{{userNativePlace.length === 0 ? '请选择':userNativePlace[0]+'-'+userNativePlace[1]+'-'+userNativePlace[2]}}"/>
+  </picker>
+  <picker mode="region" bindchange="bindBirthplaceChange" value="{{userBirthPlace}}">
+    <choice text="出生地" textlast="{{userBirthPlace.length === 0 ? '请选择':userBirthPlace[0]+'-'+userBirthPlace[1]+'-'+userBirthPlace[2]}}"/>
+  </picker>
+  <picker mode="date" value="{{userPartyTime}}" start="1900-01-01" end="{{dateEnd}}" bindchange="parttyBindDateChange">
+    <choice text="入党时间" textlast="{{userPartyTime === '' ? '请选择':userPartyTime}}"/>
+  </picker>
+  <picker mode="date" value="{{userHaveJob}}" start="1900-01-01" end="{{dateEnd}}" bindchange="workBindDateChange">
+    <choice text="参加工作时间" textlast="{{userHaveJob === '' ? '请选择':userHaveJob}}"/>
+  </picker>
+  <picker bindchange="healthyBindPickerChange" range="{{healthy}}" value="{{userHealthConditionIndex}}">
+    <choice text="健康状况" textlast="{{userHealthConditionIndex === null ? '请选择':healthy[userHealthConditionIndex]}}"/>
+  </picker>
+  <inputCom text="专业技术职务" placeholder="请输入专业技术职务" inValue="{{userProfessionalTechnologyPosition}}" label="33" wxmodule="userProfessionalTechnologyPosition" bindinputClick="inputClick"/>
+  <inputCom text="熟悉专业有何专长" placeholder="请输入熟悉专业有何专长" inValue="{{userSpecialty}}" label="42" wxmodule="userSpecialty" bindinputClick="inputClick"/>
+  <view class="loopList">
+    <view class="loopList_top offline">
+      <text>全日制教育</text>
+      <image src="../../image/jia.png" bindtap="educationClick"></image>
+    </view>
+    <view class="loopList_for" wx:for="{{loopList}}" wx:key="index">
+      <picker bindchange="educationBindPickerChange" data-i="{{index}}"  range="{{education}}" value="{{item.userFullTimeQualificationIndex}}">
+        <view class="loopList_for_top offline">
+          <view>请选择学历学位</view>
+          <view><text style="{{item.education === '' ? 'color: #999999;':'color: #000;'}}">{{item.education === "" ? "请选择":item.education}}</text><image src="../../image/right.png"></image></view>
+        </view>
+      </picker>
+      <view class="loopList_for_bot">
+        <view>毕业院校系及专业</view>
+        <input type="text" placeholder="请输入毕业院校系及专业" value="{{item.major}}" bindinput="majorInput" data-i="{{index}}"/>
+      </view>
+    </view>
+  </view>
+  <view class="loopList">
+    <view class="loopList_top offline">
+      <text>在职教育</text>
+      <image src="../../image/jia.png" bindtap="educationClick1"></image>
+    </view>
+    <view class="loopList_for" wx:for="{{loopList1}}" wx:key="index">
+      <picker bindchange="educationBindPickerChange1" data-i="{{index}}"  range="{{education}}" value="{{item.userOnJobQualificationIndex}}">
+        <view class="loopList_for_top offline">
+          <view>请选择学历学位</view>
+          <view><text style="{{item.education === '' ? 'color: #999999;':'color: #000;'}}">{{item.education === "" ? "请选择":item.education}}</text><image src="../../image/right.png"></image></view>
+        </view>
+      </picker>
+      <view class="loopList_for_bot">
+        <view>毕业院校系及专业</view>
+        <input type="text" placeholder="请输入毕业院校系及专业" value="{{item.major}}" bindinput="majorInput1" data-i="{{index}}"/>
+      </view>
+    </view>
+  </view>
+  <inputCom text="简历" types="textarea" placeholder="请输入简历" inValue="{{userResume}}" wxmodule="userResume" bindinputClick="inputClick"/>
+  <inputCom text="奖惩情况" types="textarea" placeholder="请输入奖惩情况" inValue="{{userRewardsPunishmentsSituation}}" wxmodule="userRewardsPunishmentsSituation" bindinputClick="inputClick"/>
+  <inputCom text="专业资格证持有情况" types="textarea" placeholder="请输入专业资格证持有情况" inValue="{{userCredentials}}" wxmodule="userCredentials" bindinputClick="inputClick"/>
+  <view class="loopList">
+    <view class="loopList_top offline">
+      <text>家庭主要成员及主要社会关系</text>
+      <image src="../../image/jia.png" bindtap="familyClick"></image>
+    </view>
+    <view class="loopList_for" wx:for="{{userFamilyVOS}}" wx:key="index">
+      <picker bindchange="appellationBindPickerChange" data-i="{{index}}"  range="{{appellation}}" value="{{item.appellationIndex}}">
+        <view class="loopList_for_top offline">
+          <view>称谓</view>
+          <view><text style="{{item.appellation === '' ? 'color: #999999;':'color: #000;'}}">{{item.appellation === "" ? "请选择":item.appellation}}</text><image src="../../image/right.png"></image></view>
+        </view>
+      </picker>
+      <view class="loopList_for_bot offline">
+        <view style="width: 16%;">姓名</view>
+        <input style="width: 84%;" type="text" placeholder="请输入姓名" bindinput="nameInput" data-i="{{index}}" value="{{item.userName}}"/>
+      </view>
+      <view class="loopList_for_bot offline">
+        <view style="width: 16%;">年龄</view>
+        <input style="width: 84%;" type="number" placeholder="请输入年龄" bindinput="ageInput" data-i="{{index}}" value="{{item.userAge}}"/>
+      </view>
+      <picker bindchange="faceBindPickerChange" data-i="{{index}}"  range="{{face}}" value="{{item.politicalLandscapeIndex}}">
+        <view class="loopList_for_top offline">
+          <view>政治面貌</view>
+          <view><text style="{{item.politicalLandscape === '' ? 'color: #999999;':'color: #000;'}}">{{item.politicalLandscape === "" ? "请选择":item.politicalLandscape}}</text><image src="../../image/right.png"></image></view>
+        </view>
+      </picker>
+      <view class="loopList_for_text">
+        <view>工作单位及职务</view>
+        <textarea placeholder="请输入工作单位及职务" bindinput="positionInput" data-i="{{index}}" value="{{item.workUnitsPosition}}"></textarea>
+      </view>
+    </view>
+  </view>
+  <fileImage count="1" title="上传照片" images="{{images}}" bind:chooseImage="chooseImage" bind:deleteImage="deleteImage"></fileImage>
+  
+  <button id="button" style="margin: 90rpx 0 30rpx;" wx:if="{{!updateTrue}}" bindtap="submit" data-isTrue="{{updateTrue}}">注册</button>
+  <button id="button" style="margin: 90rpx 0 30rpx;" wx:if="{{updateTrue}}" bindtap="submit" data-isTrue="{{updateTrue}}">修改</button>
+
+  
+</view>

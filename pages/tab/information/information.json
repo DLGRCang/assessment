@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "missingPage":"../../../components/missingPage/missingPage"
+  },
   "navigationBarTitleText": "信息填报"
 }

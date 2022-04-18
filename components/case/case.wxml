@@ -1,0 +1,11 @@
+<view class="case {{caseClass}}" style="border-radius: {{radius}}rpx;">
+  <view class="case_f">{{text}}</view>
+  <view class="case_l">
+    <view class="case_l_view">
+      <view class="case_l_view_view" wx:if="{{content !== ''}}">{{content}}</view>
+      <view class="imagesView" wx:if="{{imgSrc !== ''}}"><image class="images" src="{{imgSrc}}"></image></view>
+    </view>
+    <image wx:if="{{rightIf}}" src="../../image/right.png" class="case_l_right"></image>
+  </view>
+  
+</view>

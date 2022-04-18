@@ -1,2 +1,21 @@
-<!--pages/tab/workToDo/workToDo.wxml-->
-<text>pages/tab/workToDo/workToDo.wxml</text>
+<view class="viewWH" wx:if="{{token !== ''}}">
+  <view class="view_input">
+    <image src="../../../image/search.png"></image>
+    <input type="text" placeholder="请输入搜索内容" bindinput="keywordsClick"/>
+  </view>
+  <view class="tab">
+      <view wx:for="{{tab}}" wx:key="index" bindtap="tabClick" data-id="{{item.id}}" style="{{item.id === tabIndex ? 'background: #FFFFFF;color: #333333;':''}}">{{item.text}}</view>
+  </view>
+  <view class="workList">
+    <view class="workList_body">
+        <view class="workList_for" wx:for="{{list}}" wx:key="index" bindtap="workClick" data-projectId="{{item.projectId}}" hover-class="addHover" hover-stay-time="200">
+            <view>{{item.projectName}}</view>
+            <view>截止日期：{{item.endProject}}</view>
+            <view style="{{item.projectStatus === '超时' ? 'background: #FF838D':item.projectStatus === '已办结' ? 'background: #266CF4' : item.projectStatus === '整改' ? 'background: #40C1A3':'background: #FF838D'}}">{{item.projectStatus}}</view>
+        </view>
+        <missingPage type="missing" wx:if="{{list.length === 0}}"></missingPage>
+    </view>
+  </view>
+</view>
+
+<missingPage type="sign" wx:if="{{token === ''}}"></missingPage>
