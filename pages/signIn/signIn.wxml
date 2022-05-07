@@ -1,8 +1,8 @@
 <view class="viewWH sign">
   <image src="../../image/touxaing.png"></image>
   <!-- <view>你好，</view> -->
-  <view>欢迎来到财政考核系统</view>
-  <view>财政考核系统申请获得以下权限：</view>
+  <view>欢迎来到财政绩效考核系统</view>
+  <view>财政绩效考核系统申请获得以下权限：</view>
   <view>获得您的公开信息（昵称，头像等）</view>
   <button id="button" bindtap="signClick" hover-class="buttonHover" hover-stay-time="200">授权/注册</button>
   <!-- <button id="button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="buttonHover" hover-stay-time="200">授权/注册</button> -->

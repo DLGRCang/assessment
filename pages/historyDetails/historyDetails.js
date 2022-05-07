@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type:[],
+    type:[{indicatorsName:"全部",indicatorsId:""}],
     typeIndex:null,
     indicatorsThirdId:"",
-    annualList:[],
+    annualList:[{annualName:"全部",annualId:""}],
     annualIndex:"",
     annualId:"",
     tab:[
@@ -37,8 +37,12 @@ Page({
     http.annualApi({
       success:res=>{
         //console.log(res)
+        let annualList = this.data.annualList
+        for(let i in res){
+          annualList.push(res[i])
+        }
         this.setData({
-          annualList:res
+          annualList
         })
       }
     })
@@ -80,6 +84,7 @@ Page({
         indicatorsId: id
       },
       success:res=>{
+        //console.log(res)
         let type = this.data.type
         for(let i in res){
           type.push(res[i])
@@ -104,7 +109,7 @@ Page({
   workClick(e){
     //console.log(e)
     let item = e.currentTarget.dataset.item
-    if(item.reportState === 2){
+    if(item.reportState === 2){ 
       wx.navigateTo({
         url: '/pages/historyDetails/fileInDetails/fileInDetails?item='+JSON.stringify(item)
       })

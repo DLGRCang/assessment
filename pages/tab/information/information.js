@@ -21,18 +21,19 @@ Page({
       // {id:10,text:"廉政教育活动",image:"../../../image/inform/10.png",url:"/pages/fileInDetails/fileInDetails"},
       // {id:11,text:"填报历史",image:"../../../image/inform/11.png",url:"/pages/historyDetails/historyDetails"},
     ],
-    token:wx.getStorageSync('token')
+    token:wx.getStorageSync('token'),
+    judgeRole:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
   },
 
-  listbyparentidList2(id,isTrue){
+  listbyparentidList2(id){
     let list = this.data.list
-    if(isTrue) list.push({indicatorsName:"填报历史",image:"../../../image/inform/11.png",url:"/pages/historyDetails/historyDetails"})
     http.listbyparentidApi({
       data:{
         indicatorsId: id,
@@ -73,14 +74,18 @@ Page({
    */
   onShow: function () {
     
-    this.setData({
-      token : wx.getStorageSync('token')
-    })
     let token = wx.getStorageSync('token')
-    if(token === ""){
-
-    }else{
-
+    this.setData({
+      token
+    })
+    if(token !== ""){
+      http.judgeRolesApi({
+        success:res=>{
+          this.setData({
+            judgeRole:res
+          })
+        }
+      })
       if(this.data.list.length === 0){
         http.listbyparentidApi({
           data:{
@@ -89,18 +94,16 @@ Page({
           success:res=>{
             //console.log(res)
               for(let i in res){
-                if(Number(i) === (res.length-1)){
-                  this.listbyparentidList2(res[i].indicatorsId,true)
-                }else{
-                  this.listbyparentidList2(res[i].indicatorsId,false)
-                }
+                this.listbyparentidList2(res[i].indicatorsId)
               }
           }
         })
       }
       
     }
+  
   },
+
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,6 +1,6 @@
 // pages/logon/logon.js
 import http from "../../utils/api"
-import {showTE} from "../../utils/util"
+import {showTE,showTN} from "../../utils/util"
 const app = getApp()
 Page({
 
@@ -10,17 +10,19 @@ Page({
   data: {
     imgUrl:app.globalData.imgUrl,
     userName:"",
+    idCard:"",
     sex:[{id:1,name:'男'},{id:2,name:'女'}],
     userIndex:null,
     userSex:'',
     userBirthDay:'',
     dateEnd: new Date(),
-    userPartyTime:'',
+    userPartyTime:[{id:1,name:"中共党员"},{id:2,name:"共青团员"},{id:3,name:"群众"}],
+    userPartyTimeIndex:null,
     userHaveJob:'',
     healthy:['健康','不健康'],
     userHealthCondition:'',
     userHealthConditionIndex:null,
-    education:['小学','中学','高中','大专','本科','研究生'],
+    education:['高中','大专','本科','研究生','博士'],
     loopList:[
       {education:"",major:"",userFullTimeQualificationIndex:null}
     ],
@@ -30,7 +32,7 @@ Page({
     userFamilyVOS:[
       {appellation:"",userName:"",userAge:"",politicalLandscape:"",workUnitsPosition:"",appellationIndex:null,politicalLandscapeIndex:null}
     ],
-    face:['中共党员','中共预备党员','共青团员','群众','民革党员','民盟盟员','民建会员','民进会员','农工党党员','致公党党员','九三学社社员','台盟盟员','无党派人士'],
+    face:['中共党员','共青团员','群众'],
     appellation:['爸爸','妈妈'],
     images: [],
     imgId:[],
@@ -39,7 +41,8 @@ Page({
     userNation:'',
     userNativePlace:[],
     userBirthPlace:[],
-    userProfessionalTechnologyPosition:"",
+    userProfessionalTechnologyPosition:['初级','中级','副高级','正高级'],
+    userProfessionalTechnologyPositionIndex:null,
     userSpecialty:"",
     userFullTimeGraduationAcademy:"",
     userFullTimeQualification:"",
@@ -71,12 +74,6 @@ Page({
                 nationIndex = i
               }
           }
-          let userIndex = null
-          for(let i in this.data.sex){
-            if(item.userSex === this.data.sex[i].name){
-              userIndex = i
-            }
-          }
           let userHealthConditionIndex = null
           for(let i in this.data.healthy){
             if(item.userHealthCondition === this.data.healthy[i]){
@@ -87,23 +84,15 @@ Page({
           if(item.userFullTimeList.length !== 0){
             loopList = []
             for(let i in item.userFullTimeList){
-              for(let n in this.data.education){
-                if(item.userFullTimeList[i].userFullTimeQualification === this.data.education[n]){
-                  loopList.push({education:item.userFullTimeList[i].userFullTimeQualification,major:item.userFullTimeList[i].userFullTimeGraduationAcademy,userFullTimeQualificationIndex:n})
-                }
-              }
+              loopList.push({education:item.userFullTimeList[i].userFullTimeQualification === '1'?'高中':item.userFullTimeList[i].userFullTimeQualification === '2'?'大专':item.userFullTimeList[i].userFullTimeQualification === '3'?'本科':item.userFullTimeList[i].userFullTimeQualification === '4'?'研究生':item.userFullTimeList[i].userFullTimeQualification === '5'?'博士':'',major:item.userFullTimeList[i].userFullTimeGraduationAcademy,userFullTimeQualificationIndex:item.userFullTimeList[i].userFullTimeQualification === '1'? 0:item.userFullTimeList[i].userFullTimeQualification === '2'?1:item.userFullTimeList[i].userFullTimeQualification === '3'?2:item.userFullTimeList[i].userFullTimeQualification === '4'?3:item.userFullTimeList[i].userFullTimeQualification === '5'?4:null})
             }
           }
           
-          let loopList1 = this.data.loopList1
+          let loopList1 = this.data.loopList1  
           if(item.userOnJobList.length !== 0){
             loopList1 = []
             for(let i in item.userOnJobList){
-              for(let n in this.data.education){
-                if(item.userOnJobList[i].userOnJobQualification === this.data.education[n]){
-                  loopList1.push({education:item.userOnJobList[i].userOnJobQualification,major:item.userOnJobList[i].userOnJobGraduationAcademy,userOnJobQualificationIndex:n})
-                }
-              }
+              loopList1.push({education:item.userOnJobList[i].userOnJobQualification === '1'?'高中':item.userOnJobList[i].userOnJobQualification === '2'?'大专':item.userOnJobList[i].userOnJobQualification === '3'?'本科':item.userOnJobList[i].userOnJobQualification === '4'?'研究生':item.userOnJobList[i].userOnJobQualification === '5'?'博士':'',major:item.userOnJobList[i].userOnJobGraduationAcademy,userOnJobQualificationIndex:item.userOnJobList[i].userOnJobQualification === '1'? 0:item.userOnJobList[i].userOnJobQualification === '2'?1:item.userOnJobList[i].userOnJobQualification === '3'?2:item.userOnJobList[i].userOnJobQualification === '4'?3:item.userOnJobList[i].userOnJobQualification === '5'?4:null})
             }
           }
           
@@ -130,18 +119,18 @@ Page({
           }
           this.setData({
             userName:item.userName,
-            userIndex:userIndex,
-            userSex:item.userSex,
+            idCard:item.idCard,
+            userIndex:item.userSex === '1' ? 0 : item.userSex === '2' ? 1:null,
             userNation:item.userNation,
             userHealthCondition:item.userHealthCondition,
             userBirthDay:item.userBirthDay,
             nationIndex:nationIndex,
             userNativePlace:item.userNativePlace !== "" ? item.userNativePlace.split('-'):"",
             userBirthPlace:item.userBirthPlace !== "" ? item.userBirthPlace.split('-'):"",
-            userPartyTime:item.userPartyTime,
+            userPartyTimeIndex:item.userPartyTime === '1' ? 0 : item.userPartyTime === '2' ? 1 : item.userPartyTime === '3' ? 2 : null,
             userHaveJob:item.userHaveJob,
             userHealthConditionIndex:userHealthConditionIndex,
-            userProfessionalTechnologyPosition:item.userProfessionalTechnologyPosition,
+            userProfessionalTechnologyPositionIndex:item.userProfessionalTechnologyPosition === '1' ? 0 : item.userProfessionalTechnologyPosition === '2' ? 1:item.userProfessionalTechnologyPosition === '3' ? 2:item.userProfessionalTechnologyPosition === '4' ? 3:null,
             userSpecialty:item.userSpecialty,
             loopList:loopList,
             loopList1:loopList1,
@@ -165,8 +154,8 @@ Page({
     let loopList = this.data.loopList
     for(let i in loopList){
       if(Number(i) === (loopList.length-1)) {
-        if(showTE(loopList[i].education,'请选择学历学位')) return
-        if(showTE(loopList[i].major,'请输入专业')) return
+        if(showTN(loopList[i].education,'请选择全日制教育学历学位')) return
+        if(showTN(loopList[i].major,'请输入全日制教育毕业院校系及专业')) return
           loopList.push({education:"",major:""})
           this.setData({
             loopList
@@ -179,8 +168,8 @@ Page({
     let loopList1 = this.data.loopList1
     for(let i in loopList1){
       if(Number(i) === (loopList1.length-1)) {
-        if(showTE(loopList1[i].education,'请选择学历学位')) return
-        if(showTE(loopList1[i].major,'请输入专业')) return
+        if(showTN(loopList1[i].education,'请选择在职教育学历学位')) return
+        if(showTN(loopList1[i].major,'请输入在职育毕业院校系及专业')) return
           loopList1.push({education:"",major:""})
           this.setData({
             loopList1
@@ -192,10 +181,11 @@ Page({
     let userFamilyVOS = this.data.userFamilyVOS
     for(let i in userFamilyVOS){
       if(Number(i) === (userFamilyVOS.length-1)){
-        if(showTE(userFamilyVOS[i].appellation,'请选择称谓')) return
-        if(showTE(userFamilyVOS[i].userName,'请输入姓名')) return
-        if(showTE(userFamilyVOS[i].userAge,'请输入年龄')) return
-        if(showTE(userFamilyVOS[i].politicalLandscape,'请选择政治面貌')) return
+        if(showTN(userFamilyVOS[i].appellation,'请选择家庭主要成员称谓')) return
+        if(showTN(userFamilyVOS[i].userName,'请输入家庭主要成员姓名')) return
+        if(showTN(userFamilyVOS[i].userAge,'请输入家庭主要成员年龄')) return
+        if(showTN(userFamilyVOS[i].politicalLandscape,'请选择家庭主要成员政治面貌')) return
+        if(showTN(userFamilyVOS[i].workUnitsPosition,'请选择家庭主要成员工作单位及职务')) return
           userFamilyVOS.push({appellation:"",userName:"",userAge:"",politicalLandscape:"",workUnitsPosition:""})
           this.setData({
             userFamilyVOS
@@ -207,8 +197,9 @@ Page({
 
   bindPickerChange: function (e) {
     let value = e.detail.value
+    //console.log(value)
     this.setData({
-      userIndex: value,
+      userIndex: Number(value),
       userSex:this.data.sex[value].name
     })
   },
@@ -220,8 +211,16 @@ Page({
   },
 
   parttyBindDateChange: function (e) {
+    let value = e.detail.value
     this.setData({
-      userPartyTime: e.detail.value
+      userPartyTimeIndex: Number(value)
+    })
+  },
+
+  userProfessionalTechnologyPositionChange:function(e){
+    let value = e.detail.value
+    this.setData({
+      userProfessionalTechnologyPositionIndex: Number(value)
     })
   },
 
@@ -247,9 +246,9 @@ Page({
     let userFullTimeQualification = ""
     for(let i in loopList){
       if(Number(i) === (loopList.length-1)){
-        userFullTimeQualification = userFullTimeQualification+loopList[i].education
+        userFullTimeQualification = userFullTimeQualification+(loopList[i].education === '高中'?'1':loopList[i].education === '大专'?'2':loopList[i].education === '本科'?'3':loopList[i].education === '研究生'?'4':'5')
       }else{
-        userFullTimeQualification = userFullTimeQualification+(loopList[i].education+'/')
+        userFullTimeQualification = userFullTimeQualification+((loopList[i].education === '高中'?'1':loopList[i].education === '大专'?'2':loopList[i].education === '本科'?'3':loopList[i].education === '研究生'?'4':'5')+'/')
       }
     }
     this.setData({
@@ -265,9 +264,9 @@ Page({
     let userOnJobQualification = ""
     for(let i in loopList1){
       if(Number(i) === (loopList1.length-1)){
-        userOnJobQualification = userOnJobQualification+loopList1[i].education
+        userOnJobQualification = userOnJobQualification+(loopList1[i].education === '高中'?'1':loopList1[i].education === '大专'?'2':loopList1[i].education === '本科'?'3':loopList1[i].education === '研究生'?'4':'5')
       }else{
-        userOnJobQualification = userOnJobQualification+(loopList1[i].education+'/')
+        userOnJobQualification = userOnJobQualification+((loopList1[i].education === '高中'?'1':loopList1[i].education === '大专'?'2':loopList1[i].education === '本科'?'3':loopList1[i].education === '研究生'?'4':'5')+'/')
       }
     }
     this.setData({
@@ -403,26 +402,38 @@ Page({
 
 
   submit(e) {
-    const {userInformationId,userName,userSex,userBirthDay,userNation,userNativePlace,userBirthPlace,userPartyTime,userHaveJob,userHealthCondition,userProfessionalTechnologyPosition,userSpecialty,userFullTimeGraduationAcademy,userFullTimeQualification,userOnJobGraduationAcademy,userOnJobQualification,userResume,userRewardsPunishmentsSituation,userCredentials,userFamilyVOS,imgId} = this.data
+    const {userInformationId,userName,idCard,userIndex,userBirthDay,userNation,userNativePlace,userBirthPlace,userPartyTimeIndex,userHaveJob,userHealthCondition,userProfessionalTechnologyPositionIndex,userSpecialty,userFullTimeGraduationAcademy,userFullTimeQualification,userOnJobGraduationAcademy,userOnJobQualification,userResume,userRewardsPunishmentsSituation,userCredentials,userFamilyVOS,imgId} = this.data
+    let userSex = userIndex === 0 ? '1':userIndex === 1 ? '2':null
+    let userPartyTime = userPartyTimeIndex === 0 ? '1':userPartyTimeIndex === 1 ? '2':userPartyTimeIndex === 2 ? '3':null
+    let userProfessionalTechnologyPosition = userProfessionalTechnologyPositionIndex === 0 ? '1' : userProfessionalTechnologyPositionIndex === 1 ? '2' : userProfessionalTechnologyPositionIndex === 2 ? '3' : userProfessionalTechnologyPositionIndex === 3 ? '4' : null 
     let userImage = imgId[0]
     let userNativePlaces = userNativePlace[0]+'-'+userNativePlace[1]+'-'+userNativePlace[2]
     let userBirthPlaces = userBirthPlace[0]+'-'+userBirthPlace[1]+'-'+userBirthPlace[2]
+    
+    let userFamilyVOSList = userFamilyVOS
+    
+    
+    
     if(showTE(userName,'请输入姓名')) return
+    if(showTE(idCard,'请输入身份证号')) return
     if(showTE(userSex,'请选择性别')) return
     if(showTE(userBirthDay,'请选择出生年月')) return
     if(showTE(userNation,'请选择民族')) return
     if(showTE(userNativePlaces,'请选择籍贯')) return
     if(showTE(userBirthPlaces,'请选择出生地')) return
-    if(showTE(userPartyTime,'请选择入党时间')) return
-    if(showTE(userHaveJob,'请选择参加工作时间')) return
-    if(showTE(userHealthCondition,'请选择健康状况')) return
-    if(showTE(userProfessionalTechnologyPosition,'请输入技术职务')) return
-    if(showTE(userSpecialty,'请输入专业')) return
+    for(let i in userFamilyVOSList){
+      if(userFamilyVOSList[i].appellation !== ''&&userFamilyVOSList[i].politicalLandscape !== ''&&userFamilyVOSList[i].userAge !== ''&&userFamilyVOSList[i].userName !== ''&&userFamilyVOSList[i].workUnitsPosition !== ''){
+      }else{
+        if(userFamilyVOSList[i].appellation !== ''||userFamilyVOSList[i].politicalLandscape !== ''||userFamilyVOSList[i].userAge !== ''||userFamilyVOSList[i].userName !== ''||userFamilyVOSList[i].workUnitsPosition !== ''){
+          if(showTN(undefined,'请补全家庭成员信息')) return
+        }
+      }
+    }
     if(showTE(userImage,'请上传照片')) return
     if(e.currentTarget.dataset.istrue){
       http.updateuserinformationApi({
         data:{
-          userInformationId,userName,userSex,userBirthDay,userNation,userNativePlace:userNativePlaces,userBirthPlace:userBirthPlaces,userPartyTime,userHaveJob,userHealthCondition,userProfessionalTechnologyPosition,userSpecialty,
+          userInformationId,userName,idCard,userSex,userBirthDay,userNation,userNativePlace:userNativePlaces,userBirthPlace:userBirthPlaces,userPartyTime,userHaveJob,userHealthCondition,userProfessionalTechnologyPosition,userSpecialty,
           userFullTimeGraduationAcademy,userFullTimeQualification,userOnJobGraduationAcademy,userOnJobQualification,userResume,userRewardsPunishmentsSituation,userCredentials,userFamilyVOS,userImage
         },
         success:res=>{
@@ -449,7 +460,7 @@ Page({
     }else{
       http.saveApi({
         data:{
-          userName,userSex,userBirthDay,userNation,userNativePlace:userNativePlaces,userBirthPlace:userBirthPlaces,userPartyTime,userHaveJob,userHealthCondition,userProfessionalTechnologyPosition,userSpecialty,
+          userName,userSex,idCard,userBirthDay,userNation,userNativePlace:userNativePlaces,userBirthPlace:userBirthPlaces,userPartyTime,userHaveJob,userHealthCondition,userProfessionalTechnologyPosition,userSpecialty,
           userFullTimeGraduationAcademy,userFullTimeQualification,userOnJobGraduationAcademy,userOnJobQualification,userResume,userRewardsPunishmentsSituation,userCredentials,userFamilyVOS,userImage
         },
         success:res=>{

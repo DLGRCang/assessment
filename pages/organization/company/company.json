@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "choice":"../../../components/choice/choice",
+    "userCom":"../../../components/userCom/userCom",
+    "missingPage":"../../../components/missingPage/missingPage"
+  },
+  "navigationBarTitleText": "单位"
+}

@@ -1,0 +1,80 @@
+.departmentListFor{
+  width: 100%;
+  padding: 50rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+}
+.departmentListForLeft{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: #ccc;
+}
+.departmentListForLeftImg{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.departmentListForRight{
+  width: 77%;
+  height: 120rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  padding: 6rpx 0;
+}
+.departmentListForRightTop{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.departmentListForRightTopFirst{
+  font-size: 28rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #333333;
+}
+.departmentListForRightTopLast{
+  display: flex;
+  align-items: center;
+}
+.departmentListForRightTopLastText{
+  font-size: 24rpx;
+  line-height: 15rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #999999;
+padding-right: 10rpx;
+}
+.departmentListForRightTopLastImg{
+  width: 12rpx;
+height: 22rpx;
+}
+.departmentListForRightBot{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.departmentListForRightBotView{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+
+}
+.departmentListForRightBotViewText1{
+  color: #333333;
+}
+.departmentListForRightBotViewText2{
+  color: #266CF4;
+}
+.addHover{
+  background-color: #C0C4CC;
+}

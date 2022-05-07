@@ -1,6 +1,7 @@
 {
   "usingComponents": {
+    "userCom":"../../../components/userCom/userCom",
     "missingPage":"../../../components/missingPage/missingPage"
   },
-  "navigationBarTitleText": "绩效考核"
+  "navigationBarTitleText": "部门"
 }

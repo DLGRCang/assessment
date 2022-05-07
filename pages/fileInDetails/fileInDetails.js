@@ -51,8 +51,7 @@ Page({
         imgId
       }) 
     }
-    console.log(updateItem)
-    console.log(optionsItem)
+    //console.log(optionsItem)
     
     
     http.annualApi({

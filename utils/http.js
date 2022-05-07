@@ -1,4 +1,4 @@
-const {baseurl} = require('./env').dev
+const {baseurl} = require('./env').prod
 module.exports = {
   http(url, method, params) {
     wx.showLoading({
@@ -11,7 +11,7 @@ module.exports = {
           delete params.data[key]
         }
       }
-      data = { ...data, ...params.data }
+      data = { ...data, ...params.data}
     }
     let token = wx.getStorageSync('token')
     let tokens = wx.getStorageSync('tokens')

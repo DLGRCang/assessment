@@ -1,11 +1,12 @@
 <view class="logon">
   <view class="logon_title">
     <view>你好</view>
-    <view>欢迎来到财政考核系统</view>
+    <view>欢迎来到财政绩效考核系统</view>
   </view>
   <inputCom text="姓名" placeholder="请输入姓名" inValue="{{userName}}" wxmodule="userName" bindinputClick="inputClick"/>
+  <inputCom text="身份证号" placeholder="请输入身份证号" label="24" inValue="{{idCard}}" wxmodule="idCard" bindinputClick="inputClick"/>
   <picker bindchange="bindPickerChange" range="{{sex}}" range-key="name" value="{{userIndex}}">
-    <choice text="性别" textlast="{{userIndex === null ? '请选择':sex[userIndex].name}}"/>
+    <choice text="性别" textlast="{{userIndex === null ? '请选择':(userIndex+1) == 1 ? '男':'女'}}"/>
   </picker>
   <picker mode="date" value="{{userBirthDay}}" start="1900-01-01" end="{{dateEnd}}" bindchange="bindDateChange">
     <choice text="出生年月" textlast="{{userBirthDay === '' ? '请选择':userBirthDay}}"/>
@@ -19,8 +20,11 @@
   <picker mode="region" bindchange="bindBirthplaceChange" value="{{userBirthPlace}}">
     <choice text="出生地" textlast="{{userBirthPlace.length === 0 ? '请选择':userBirthPlace[0]+'-'+userBirthPlace[1]+'-'+userBirthPlace[2]}}"/>
   </picker>
-  <picker mode="date" value="{{userPartyTime}}" start="1900-01-01" end="{{dateEnd}}" bindchange="parttyBindDateChange">
+  <!-- <picker mode="date" value="{{userPartyTime}}" start="1900-01-01" end="{{dateEnd}}" bindchange="parttyBindDateChange">
     <choice text="入党时间" textlast="{{userPartyTime === '' ? '请选择':userPartyTime}}"/>
+  </picker> -->
+  <picker bindchange="parttyBindDateChange" range="{{userPartyTime}}" range-key="name" value="{{userPartyTimeIndex}}">
+    <choice text="政治面貌" textlast="{{userPartyTimeIndex === null ? '请选择' : userPartyTimeIndex+1 === 1 ? '中共党员' : userPartyTimeIndex+1 === 2 ? '共青团员' : '群众'}}"/>
   </picker>
   <picker mode="date" value="{{userHaveJob}}" start="1900-01-01" end="{{dateEnd}}" bindchange="workBindDateChange">
     <choice text="参加工作时间" textlast="{{userHaveJob === '' ? '请选择':userHaveJob}}"/>
@@ -28,7 +32,10 @@
   <picker bindchange="healthyBindPickerChange" range="{{healthy}}" value="{{userHealthConditionIndex}}">
     <choice text="健康状况" textlast="{{userHealthConditionIndex === null ? '请选择':healthy[userHealthConditionIndex]}}"/>
   </picker>
-  <inputCom text="专业技术职务" placeholder="请输入专业技术职务" inValue="{{userProfessionalTechnologyPosition}}" label="33" wxmodule="userProfessionalTechnologyPosition" bindinputClick="inputClick"/>
+  <!-- <inputCom text="专业技术职务" placeholder="请输入专业技术职务" inValue="{{userProfessionalTechnologyPosition}}" label="33" wxmodule="userProfessionalTechnologyPosition" bindinputClick="inputClick"/> -->
+  <picker bindchange="userProfessionalTechnologyPositionChange" range="{{userProfessionalTechnologyPosition}}" value="{{userProfessionalTechnologyPositionIndex}}">
+    <choice text="职称" textlast="{{userProfessionalTechnologyPositionIndex === null ? '请选择':(userProfessionalTechnologyPositionIndex+1) == 1 ? '初级':(userProfessionalTechnologyPositionIndex+1) == 2 ? '中级':(userProfessionalTechnologyPositionIndex+1) == 3 ? '副高级':'正高级'}}"/>
+  </picker>
   <inputCom text="熟悉专业有何专长" placeholder="请输入熟悉专业有何专长" inValue="{{userSpecialty}}" label="42" wxmodule="userSpecialty" bindinputClick="inputClick"/>
   <view class="loopList">
     <view class="loopList_top offline">

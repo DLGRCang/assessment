@@ -7,7 +7,7 @@ Page({
    */
   data: {
     tab:[
-      {id:0,text:"正在待办"},
+      {id:0,text:"正在督办"},
       {id:1,text:"已完结"}
     ],
     tabIndex:0,
@@ -64,10 +64,12 @@ Page({
         keywords:this.data.keywords
       },
       success:res=>{
-        console.log(res)
-        this.setData({
-          list:res
-        })
+        if(res.length >= 0){
+          this.setData({
+            list:res
+          })
+        }
+        
       }
     })
   },

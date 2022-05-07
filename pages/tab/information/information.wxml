@@ -1,9 +1,16 @@
-<view class="inform" wx:if="{{token !== ''}}">
+<view class="inform" wx:if="{{token !== ''&&list.length !== 0}}">
   <view class="inform_for" hover-class="addHover" hover-stay-time="200" wx:for="{{list}}" wx:key="index" bindtap="formClick" data-item="{{item}}" data-url="{{item.url}}">
     <image src="{{item.image}}"></image>
     <view>{{item.indicatorsName}}</view>
   </view>
-  
+  <view class="inform_for" hover-class="addHover" hover-stay-time="200" bindtap="formClick" data-url="/pages/historyDetails/historyDetails">
+    <image src="../../../image/inform/11.png"></image>
+    <view>填报历史</view>
+  </view>
+  <view wx:if="{{judgeRole}}" class="inform_for" hover-class="addHover" hover-stay-time="200" bindtap="formClick" data-url="/pages/organization/organization">
+    <image src="../../../image/inform/12.png"></image>
+    <view>组织机构</view> 
+  </view>
 </view>
 <missingPage type="missing" wx:if="{{list.length === 0 && token !== ''}}"></missingPage>
 <missingPage type="sign" wx:if="{{token === ''}}"></missingPage>

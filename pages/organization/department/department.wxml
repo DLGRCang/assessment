@@ -1,0 +1,8 @@
+<view class="viewWH department">
+  <view class="title">{{title}}</view>
+  <view class="departmentList">
+    <missingPage type="missing" wx:if="{{list.length === 0}}"></missingPage>
+    <userCom wx:for="{{list}}" wx:key="index" userName="{{item.userName}}" userImg="{{item.userImg}}" text1="{{item.totalScore}}" text2="{{item.globalRank}}" text3="{{item.departmentRank}}" bind:userClick="userClick" data-item="{{item}}"></userCom>
+  </view>
+  
+</view>

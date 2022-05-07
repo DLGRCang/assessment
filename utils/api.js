@@ -42,7 +42,7 @@ function updatereportrecordApi(params) {
 
 //个人信息回显
 function userInformationApi(params) {
-  http('/assessmentmanagement/app/user-information/get', 'get', params)
+  http('/assessmentmanagement/app/user-information/personCenter', 'get', params)
 }
 //个人信息修改
 function updateuserinformationApi(params) {
@@ -64,6 +64,38 @@ function couplebackApi(params) {
 function reorganizeSituationApi(params) {
   http('/assessmentmanagement/app/project/reorganizeSituation/'+params.data.projectId+'/'+params.data.reorganizeSituation+'/'+params.data.reorganizeSituationPicture, 'put', params)
 }
+//人员分布统计
+function personDistributionStatisticalApi(params) {
+  http('/assessmentmanagement/app/user-information/personDistributionStatistical', 'get', params)
+}
+//人事概况
+function personGeneralApi(params) {
+  http('/assessmentmanagement/app/user-information/personGeneral?type='+params.data.type, 'get', params)
+}
+//组织部门
+function listztreeApi(params) {
+  http('/assessmentmanagement/app/user-information/departmentZtreeList', 'get', params)
+}
+//部门
+function departmentListApi(params) {
+  http('/assessmentmanagement/app/user-information/departmentList?departmentId='+params.data.departmentId, 'get', params)
+}
+//部门>人
+function departmentUserListApi(params) {
+  http('/assessmentmanagement/app/user-information/departmentUserList?departmentId='+params.data.departmentId, 'get', params)
+}
+//排名
+function rankApi(params) {
+  http('/assessmentmanagement/app/user-information/rank?userId='+params.data.unifiedUserId+'&type='+params.data.type, 'get', params)
+}
+//判断角色
+function judgeRolesApi(params) {
+  http('/assessmentmanagement/app/user-information/judgeRoles', 'get', params)
+}
+//个人详情
+function getUserInfoApi(params) {
+  http('/assessmentmanagement/app/user-information/getUserInfo?userId='+params.data.unifiedUserId, 'get', params)
+}
 
 export default { // 暴露接口
   signApi,
@@ -81,5 +113,13 @@ export default { // 暴露接口
   userInformationApi,
   updateuserinformationApi,
   couplebackApi,
-  reorganizeSituationApi
+  reorganizeSituationApi,
+  personDistributionStatisticalApi,
+  personGeneralApi,
+  listztreeApi,
+  departmentListApi,
+  departmentUserListApi,
+  rankApi,
+  judgeRolesApi,
+  getUserInfoApi
 }

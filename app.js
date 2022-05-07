@@ -1,5 +1,5 @@
 // app.js
-const {baseurl} = require('./utils/env').dev
+const {baseurl} = require('./utils/env').prod
 App({
   onLaunch() {
     // 展示本地存储能力

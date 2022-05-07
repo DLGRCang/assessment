@@ -1,4 +1,4 @@
-const {baseurl} = require('./env').dev
+const {baseurl} = require('./env').prod
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -31,6 +31,7 @@ const imgClick = function (){
   
   return new Promise((resolve, reject) => {
     wx.chooseImage({
+      count: 1,
       success (res) {
         const tempFilePaths = res.tempFilePaths[0]
         wx.showLoading({
@@ -99,11 +100,24 @@ function showTL(cont,text){
   }
 }
 
+function showTN(cont,text){
+  if(cont === "" || cont === undefined || cont === null || !cont || cont.length === 0){
+    return wx.showToast({
+      title: text,
+      icon: 'none',
+      duration: 2000
+    })
+  }else{
+    return false
+  }
+}
+
 module.exports = {
   formatTime,
   login,
   imgClick,
   showTS,
   showTE,
-  showTL
+  showTL,
+  showTN
 }

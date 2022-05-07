@@ -1,0 +1,56 @@
+.tabView{
+  width: 100%;
+  padding: 10rpx;
+}
+.viewWHWidth{
+  width: 100%;
+}
+.nav{
+  overflow: hidden;
+  /* 规定段落中的文本不进行换行： */
+  white-space: nowrap;
+  
+}
+
+::-webkit-scrollbar {
+  display:none;
+  width:0;
+  height:0;
+  color:transparent;
+}
+.tabViewText{
+  display: inline-block;
+  padding: 0 10rpx;
+  font-size: 26rpx;
+font-family: Microsoft YaHei;
+font-weight: 400;
+color: #999999;
+}
+.active{
+  font-weight: bold;color:#333333;
+}
+
+.pieView{
+  width: 100%;
+height: 650rpx;
+background: #FFFFFF;
+border-radius: 20rpx;
+margin-top: 20rpx;
+}
+.columnTitle{
+  width: 100%;
+  padding: 50rpx 0 30rpx 20rpx;
+  font-size: 28rpx;
+font-family: Microsoft YaHei;
+font-weight: bold;
+color: #333333;
+}
+.columnView{
+  width: 100%;
+height: 655rpx;
+background: #FFFFFF;
+border-radius: 20rpx;
+margin-bottom: 30rpx;
+padding: 50rpx 0 0;
+overflow-x: auto;
+}

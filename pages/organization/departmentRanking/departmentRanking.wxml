@@ -1,0 +1,13 @@
+<view class="viewWH ranking">
+  <view class="rankingView">
+    <view class="rankingViewList">
+      <view class="rankingViewListFor" wx:for="{{list}}" wx:key="index">
+        <view class="rankingViewListForLeft"><image src="{{imgUrl+item.userImage}}"></image></view>
+        <view class="rankingViewListForRight">
+          <view>{{item.userName}}</view>
+          <view class="{{index === 0||index===1||index===2 ? 'rankingText':'rankingText1'}}">{{index+1}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

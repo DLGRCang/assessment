@@ -2,5 +2,5 @@
   "usingComponents": {
     "missingPage":"../../../components/missingPage/missingPage"
   },
-  "navigationBarTitleText": "绩效考核"
+  "navigationBarTitleText": "人事概况"
 }

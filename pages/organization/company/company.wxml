@@ -1,0 +1,11 @@
+<view class="viewWH organization">
+  <view wx:for="{{list}}" wx:key="index">
+    <view wx:if="{{item.unifiedUserId !== undefined}}">
+      <userCom userName="{{item.userName}}" userImg="{{item.userImg}}" text1="{{item.totalScore}}" text2="{{item.globalRank}}" text3="无" bind:userClick="userClick" data-item="{{item}}"></userCom>
+    </view>
+    <view wx:if="{{item.length !== 0}}">
+      <choice wx:for="{{item}}" wx:for-item="items" wx:for-index="i" wx:key="i" wx:if="{{items.isParent !== undefined}}" text="{{items.name}}" bindtap="organizationClick" data-item="{{items}}"/>
+    </view>  
+  </view>
+  <missingPage type="missing" wx:if="{{list.length === 0}}"></missingPage>
+</view> 

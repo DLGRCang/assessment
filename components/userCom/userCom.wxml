@@ -1,0 +1,14 @@
+<view class="departmentListFor" hover-class="addHover" hover-stay-time="200" bindtap="userClick" data-state="0">
+      <view class="departmentListForLeft"><image class="departmentListForLeftImg" src="{{userImg}}"></image></view>
+      <view class="departmentListForRight">
+        <view class="departmentListForRightTop">
+          <view class="departmentListForRightTopFirst">{{userName}}</view>
+          <view class="departmentListForRightTopLast"><text class="departmentListForRightTopLastText">个人详情</text><image class="departmentListForRightTopLastImg" src="../../image/right.png"></image></view>
+        </view>
+        <view class="departmentListForRightBot">
+          <view class="departmentListForRightBotView"><text class="departmentListForRightBotViewText1">当前得分:</text><text class="departmentListForRightBotViewText2">{{text1}}</text></view>
+          <view class="departmentListForRightBotView" catchtap="userClick" data-state="1"><text class="departmentListForRightBotViewText1">单位排名:</text><text class="departmentListForRightBotViewText2">{{text2}}</text></view>
+          <view class="departmentListForRightBotView" catchtap="userClick" data-state="2"><text class="departmentListForRightBotViewText1">部门排名:</text><text class="departmentListForRightBotViewText2">{{text3}}</text></view>
+        </view>
+      </view>
+    </view>

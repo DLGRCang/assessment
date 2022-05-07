@@ -10,7 +10,7 @@ Page({
   data: {
     imgUrl:app.globalData.imgUrl,
     wxuser:undefined,
-    userInfor:undefined
+    resItem:undefined
   },
 
   /**
@@ -46,15 +46,64 @@ Page({
     this.setData({
       wxuser:wx.getStorageSync('wxuser')
     }) 
-    http.userInformationApi({
-      success:res=>{
-        
-        console.log(res)
-        this.setData({
-          userInfor:res
-        })
-      }
-    })
+    if(wx.getStorageSync('token') !== ""){
+      http.userInformationApi({
+        success:res=>{
+          //console.log(res)
+          let userFullTimeList = []
+          let userOnJobList = []
+          if(res.userFullTimeQualification !== ""){
+            let userFullTimeQualification = res.userFullTimeQualification.split('/')
+            let userFullTimeGraduationAcademy = res.userFullTimeGraduationAcademy.split('/')
+            for(let i in userFullTimeQualification){
+              userFullTimeList.push({id:Number(i),userFullTimeQualification:userFullTimeQualification[i],userFullTimeGraduationAcademy:userFullTimeGraduationAcademy[i]})
+            }
+          }
+          if(res.userOnJobQualification !== ""){
+            let userOnJobQualification = res.userOnJobQualification.split('/')
+            let userOnJobGraduationAcademy = res.userOnJobGraduationAcademy.split('/')
+            for(let i in userOnJobQualification){
+              userOnJobList.push({id:Number(i),userOnJobQualification:userOnJobQualification[i],userOnJobGraduationAcademy:userOnJobGraduationAcademy[i]})
+            }
+          }
+          
+          res.userFullTimeList = userFullTimeList
+          res.userOnJobList = userOnJobList
+          //console.log(res)
+          this.setData({
+            resItem:res
+          })
+        }
+      })
+    }
+    
+  },
+
+  lognClick(){
+    if(this.data.resItem.userInformationId === ""){
+      wx.navigateTo({
+        url: '/pages/logon/logon'
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/logon/logon?item='+JSON.stringify(this.data.resItem),
+      })
+    }
+    
+  },
+
+  userClick(e){
+    let state = e.currentTarget.dataset.state
+    if(state === '1'){
+      wx.navigateTo({
+        url: '/pages/organization/unitRanking/unitRanking?item='+JSON.stringify(e.currentTarget.dataset.item),
+      })
+    }
+    if(state === '2'){
+      wx.navigateTo({
+        url: '/pages/organization/departmentRanking/departmentRanking?item='+JSON.stringify(e.currentTarget.dataset.item),
+      })
+    }
   },
 
   /**

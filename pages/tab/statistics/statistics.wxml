@@ -1,0 +1,23 @@
+<view class="viewWH" wx:if="{{token !== ''}}">
+  <view class="viewWHWidth">
+    <view class="tabView">
+      <scroll-view class="nav" scroll-x="true" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+          <block wx:for="{{tabList}}" wx:key="index">
+              <view class="tabViewText {{currentTab === index ?'active':''}}" data-current="{{index}}" bindtap="switchNav">
+                  {{item.text}}</view>
+          </block>
+      </scroll-view>
+    </view>
+    <view class="pieView" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <canvas canvas-id="pieCanvas" disable-scroll="true" class="pieCanvas" style="width:100%; height:100%;"></canvas>
+    </view>
+  </view>
+  <view class="viewWHWidth">
+    <view class="columnTitle">人员分布统计</view>
+    <scroll-view class="columnView" scroll-x="true" scroll-with-animation="{{true}}">
+      <canvas canvas-id="columnCanvas" disable-scroll="true" class="columnCanvas" style="width:{{columnCanvasLength <= 2 ? columnWindowWidth+'px':(columnCanvasLength*200)+'px'}};height:100%;"></canvas>
+      </scroll-view>
+  </view>
+  
+</view>
+<missingPage type="sign" wx:if="{{token === ''}}"></missingPage>
